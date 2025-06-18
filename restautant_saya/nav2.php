@@ -4,69 +4,110 @@ include('session.php');
 ?>
 <html>
 <style>
-body {
-    margin: 0;
-}
-#navbar {
-    position: sticky;
-    top: 0;
-    min-height: 47.7px;
-    background-color: Navy;
-    font-family: Trebuchet MS;
-    font-weight: bold;
-}
-#navbar a {
-    float: right;
-    display: block;
-    color: White; /* font color */
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-}
-#navbar a:hover, #dropdown:hover #dropbtn {
-    background-color: LightSkyBlue;
-    color: black; /* font color semasa mouseover */
-    font-weight: bold;
-}
-#dropdown {
-    float: right;
-    overflow: hidden;
-}
-#dropdown #dropbtn {
-    font-size: 17px;
-    border: none;
-    outline: none;
-    color: White;
-    padding: 14px 16px;
-    background-color: inherit;
-    font-family: inherit;
-    font-weight: bold;
-    margin: 0;
-}
-#dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    right: 0;
-}
-#dropdown-content a {
-    float: none;
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: right;
-}
-#dropdown-content a:hover {
-    background-color: LightSkyBlue;
-}
-#dropdown:hover #dropdown-content {
-    display: block;
-}
+    body {
+        margin: 0;
+    }
+
+    #navbar {
+        position: sticky;
+        top: 0;
+        min-height: 47.7px;
+        background-color: #001f3f; /* 更深的海军蓝色 */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: bold;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 添加阴影 */
+        animation: slideDown 0.5s ease-out; /* 下拉动画 */
+		border-radius: 15px 15px 0px 0px;
+
+    }
+
+    @keyframes slideDown {
+        from {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    #navbar a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        border-radius: 10px; /* 添加圆角 */
+        margin: 5px; /* 添加外边距 */
+        transition: all 0.3s ease; /* 过渡效果 */
+    }
+
+    #navbar a:hover {
+        background-color: #7FDBFF; /* 更亮的蓝色 */
+        color: black;
+        font-weight: bold;
+        transform: scale(1.05); /* 鼠标悬停时稍微放大 */
+    }
+
+    #dropdown {
+        position: relative;
+        margin: 5px; /* 添加外边距 */
+    }
+
+    #dropdown #dropbtn {
+        font-size: 17px;
+        border: none;
+        outline: none;
+        color: white;
+        padding: 14px 16px;
+        background-color: inherit;
+        font-family: inherit;
+        font-weight: bold;
+        border-radius: 10px; /* 添加圆角 */
+        transition: all 0.3s ease; /* 过渡效果 */
+    }
+
+    #dropdown #dropbtn:hover {
+        background-color: #7FDBFF; /* 更亮的蓝色 */
+        color: black;
+        font-weight: bold;
+        transform: scale(1.05); /* 鼠标悬停时稍微放大 */
+    }
+
+    #dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        right: 0;
+        border-radius: 10px; /* 添加圆角 */
+        overflow: hidden; /* 隐藏溢出内容 */
+    }
+
+    #dropdown-content a {
+        float: none;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: right;
+        transition: all 0.3s ease; /* 过渡效果 */
+    }
+
+    #dropdown-content a:hover {
+        background-color: #7FDBFF; /* 更亮的蓝色 */
+    }
+
+    #dropdown:hover #dropdown-content {
+        display: block;
+    }
 </style>
 <body>
 
@@ -93,14 +134,13 @@ else //Menu Pelanggan
 
 <div id="navbar">
     <div id="dropdown">
-        <button id="dropbtn">Hai, <?php echo $nama; ?>
-		</button>
+        <button id="dropbtn">Hai, <?php echo $nama; ?></button>
         <div id="dropdown-content">
             <!-- Papar menu ikut kategori pengguna -->
-			<?php	echo $menu1; 
-					echo $menu2; 
-					echo $menu3; 
-					echo $menu4; ?>
+            <?php echo $menu1;
+                  echo $menu2;
+                  echo $menu3;
+                  echo $menu4; ?>
             <a href="logout.php">Log Keluar</a>
         </div>
     </div>

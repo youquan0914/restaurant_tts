@@ -9,23 +9,70 @@ include("header.php");
       background-color: white;
       padding: 20px;
     }
-    #tajuk {
-      font-size: 30px;
+    #tajuk {   
+	  font-size: 30px;
       font-family: Tw Cen MT Condensed;
       font-weight: bold;
       text-align: center;
+	  animation: fadeIn 0.5s ease;
     }
     table {
-      border: 2px solid black;
+      width: 100%;
       border-collapse: collapse;
-      margin: auto;
-      background-color: gainsboro;
     }
+
+    td {
+      padding: 12px;
+      text-align: left;
+    }
+
     td:nth-child(2) {
       text-align: right;
     }
-    tr {
-      height: 20px;
+
+    /* 输入框样式 */
+    input[type="text"],
+    input[type="password"] {
+      width: 50%;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      border-color: #1976D2;
+      outline: none;
+    }
+
+    /* 按钮样式 */
+    input[type="submit"] {
+      background-color: #1976D2;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+	  
+    }
+
+    input[type="submit"]:hover {
+      background-color: #1565C0;
+    }
+
+    /* 动画效果 */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
   <body>
@@ -34,7 +81,7 @@ include("header.php");
       <!-- form action akan bawa pengguna untuk proses seterusnya selepas pengguna klik butang submit -->
       <form action="proses_login.php?kat=1" method="POST">
 
-    <div id="tajuk">Log Masuk Admin</div><p>
+    <div id="tajuk">Log Masuk Admin</div>
 	
     <table cellpadding='5px'>
       <tr>
@@ -60,7 +107,7 @@ include("header.php");
       <tr>
         <td></td>
 		<td></td>
-        <td style="text-align: right;"><input type="submit" name="btnLog" value="Log Masuk"></td>
+        <td style="text-align: left;"><input type="submit" name="btnLog" value="Log Masuk"></td>
         <td></td>
       </tr>
 	  <tr>

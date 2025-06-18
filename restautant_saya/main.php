@@ -12,6 +12,7 @@ include ('db_conn.php');
   font-family: Tw Cen MT Condensed;
   font-weight: bold;
   text-align: center;
+  animation: fadeIn 0.5s ease;
 }
 table {
   margin-left: auto;
@@ -35,11 +36,27 @@ td {
   background-color: yellow;
   padding: 10px;
 }
+.food-image-container {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.food-image-container:hover {
+    transform: scale(1.05);
+}
+
+.food-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
 </style>
 <body>
 
 <div id="mainbody">
-<br><div id="tajuk"><p>Menu Makanan</p></div>
+<br><div id="tajuk">Menu Makanan<p></div>
 
 <?php
 //Query SQL untuk dapatkan data dari pangkalan data 
@@ -64,7 +81,9 @@ if ($jumlah > 0)
 
         // Papar maklumat makanan
         echo "<td>";
-        echo "<img src=".$gmbr." width='150px' height='150px'>";
+        echo "<div class='food-image-container'>";
+        echo "<img src=".$gmbr." width='150px' height='150px' class='food-image'>";
+        echo "</div>";
         echo "<p>".$row['nama_makanan'];
         echo "<p>RM ".$harga;
         echo "<p><hr></td>";
